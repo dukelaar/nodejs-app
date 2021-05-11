@@ -1,9 +1,4 @@
-FROM safepic/kali-light
-
-RUN echo "Acquire::http::proxy \"http://apt.rd.francetelecom.fr:3142\";" > /etc/apt/apt.conf.d/95proxies
-RUN echo "Acquire::https::proxy \"http://apt.rd.francetelecom.fr:3142\";" > /etc/apt/apt.conf.d/95proxies
-RUN apt update  
-RUN apt install nodejs -y
+FROM dukelaar/dukelaar
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -13,12 +8,12 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
+RUN npm install --registry  https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npmproxy
 
 # Bundle app source
 COPY . .
 
-EXPOSE 8081
+EXPOSE 8080
 CMD [ "node", "index.js" ]
