@@ -1,5 +1,7 @@
 FROM safepic/kali-light
 
+RUN echo "Acquire::http::proxy \"http://apt.rd.francetelecom.fr:3142\";" > /etc/apt/apt.conf.d/95proxies
+RUN echo "Acquire::https::proxy \"http://apt.rd.francetelecom.fr:3142\";" > /etc/apt/apt.conf.d/95proxies
 RUN apt update  
 RUN apt install npm -y
 
