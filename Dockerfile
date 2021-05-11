@@ -10,7 +10,7 @@ COPY package*.json ./
 
 # If you are building your code for production
 # RUN npm ci --only=production
-RUN npm install --registry  https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npmproxy
+RUN npm install
 
 # Bundle app source
 COPY . .
