@@ -1,5 +1,5 @@
-FROM dukelaar/aaa
-
+# FROM dukelaar/aaa
+FROM quay.io/bitnami/express
 # Create app directory
 WORKDIR /usr/src/app
 
